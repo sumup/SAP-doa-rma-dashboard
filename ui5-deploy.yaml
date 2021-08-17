@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '2.4'
+metadata:
+  name: 'zdoa_rma'
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: dev
+          url: http://appdev.sumup.hana:8013
+        app:
+          name: ZDOA_RMA
+          description: First Deploy
+          package: ZD_DASHBOARD_SUPPLY
+          transport: SHDK911602
